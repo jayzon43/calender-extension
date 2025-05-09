@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Calendar セットアップ</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .setup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"], input[type="file"] {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .instructions {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+        .success-message {
+            color: #4CAF50;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Todo Calendar セットアップ</h1>
+        <div class="setup-form">
+            <div class="form-group">
+                <label for="openai-key">OpenAI APIキー</label>
+                <input type="text" id="openai-key" placeholder="sk-..." required>
+            </div>
+            <div class="form-group">
+                <label for="credentials-file">Google Cloud credentials.json</label>
+                <input type="file" id="credentials-file" accept=".json" required>
+            </div>
+            <button onclick="saveSettings()">設定を保存</button>
+        </div>
+        <div id="success-message" class="success-message">
+            設定が正常に保存されました！
+        </div>
+        <div class="instructions">
+            <h3>セットアップ手順</h3>
+            <ol>
+                <li>OpenAI APIキーを<a href="https://platform.openai.com/" target="_blank">OpenAIのウェブサイト</a>から取得</li>
+                <li>Google Cloud Consoleで以下の設定を行う：
+                    <ul>
+                        <li><a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a>にアクセス</li>
+                        <li>新しいプロジェクトを作成</li>
+                        <li>Google Calendar APIを有効化</li>
+                        <li>認証情報（OAuth 2.0クライアントID）をダウンロード</li>
+                    </ul>
+                </li>
+                <li>ダウンロードしたcredentials.jsonをアップロード</li>
+            </ol>
+        </div>
+    </div>
+    <script>
+        async function saveSettings() {
+            const openaiKey = document.getElementById('openai-key').value;
+            const credentialsFile = document.getElementById('credentials-file').files[0];
+
+            if (!openaiKey || !credentialsFile) {
+                alert('すべての項目を入力してください。');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('openai_key', openaiKey);
+            formData.append('credentials_file', credentialsFile);
+
+            try {
+                const response = await fetch('/api/setup', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    document.getElementById('success-message').style.display = 'block';
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 2000);
+                } else {
+                    alert('設定の保存中にエラーが発生しました。');
+                }
+            } catch (error) {
+                alert('エラーが発生しました: ' + error.message);
+            }
+        }
+    </script>
+</body>
+</html> 

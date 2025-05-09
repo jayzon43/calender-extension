@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Todo Calendar",
+  "version": "1.0",
+  "description": "テキストからタスクを抽出してGoogle Calendarに登録する拡張機能",
+  "action": {
+    "default_popup": "html/popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "permissions": [
+    "contextMenus",
+    "activeTab",
+    "storage",
+    "identity"
+  ],
+  "host_permissions": [
+    "http://localhost:8000/*"
+  ],
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["js/content.js"]
+    }
+  ],
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  }
+} 

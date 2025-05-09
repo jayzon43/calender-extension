@@ -1,0 +1,158 @@
+/* リセットとベーススタイル */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+.container {
+  width: 400px;
+  min-height: 500px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ヘッダー */
+header {
+  background-color: #4285F4;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* メインコンテンツ */
+main {
+  padding: 20px;
+}
+
+/* フォームスタイル */
+.task-form {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #555;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+textarea {
+  height: 80px;
+  resize: vertical;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #4285F4;
+  box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+}
+
+/* ボタン */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.primary-btn {
+  background-color: #4285F4;
+  color: white;
+}
+
+.primary-btn:hover {
+  background-color: #3367d6;
+}
+
+.secondary-btn {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+.secondary-btn:hover {
+  background-color: #e4e4e4;
+}
+
+/* ステータスメッセージ */
+.status-message {
+  margin: 15px 0;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.success {
+  background-color: #e6f4ea;
+  color: #137333;
+}
+
+.error {
+  background-color: #fce8e6;
+  color: #c5221f;
+}
+
+/* 使い方の説明 */
+.instructions {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f1f3f4;
+  border-radius: 4px;
+}
+
+.instructions p {
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.instructions ol {
+  padding-left: 20px;
+}
+
+.instructions li {
+  margin-bottom: 5px;
+}
+
+/* フッター */
+footer {
+  padding: 15px;
+  text-align: center;
+  color: #666;
+  font-size: 12px;
+  border-top: 1px solid #eee;
+} 

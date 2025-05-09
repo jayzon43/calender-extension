@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo Calendar</title>
+  <link rel="stylesheet" href="../css/popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Todo Calendar</h1>
+    </header>
+    
+    <main>
+      <div class="task-form">
+        <div class="form-group">
+          <label for="title">タイトル</label>
+          <input type="text" id="title" name="title" placeholder="タスク名を入力" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="start">開始日時</label>
+          <input type="datetime-local" id="start" name="start" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="end">終了日時</label>
+          <input type="datetime-local" id="end" name="end" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="location">場所（任意）</label>
+          <input type="text" id="location" name="location" placeholder="場所を入力">
+        </div>
+        
+        <div class="form-group">
+          <label for="description">説明（任意）</label>
+          <textarea id="description" name="description" placeholder="説明を入力"></textarea>
+        </div>
+        
+        <div class="actions">
+          <button id="add-to-calendar" class="primary-btn">Googleカレンダーに追加</button>
+          <button id="clear-form" class="secondary-btn">クリア</button>
+        </div>
+      </div>
+      
+      <div id="status-message" class="status-message"></div>
+      
+      <div class="instructions">
+        <p>テキストからタスクを抽出するには:</p>
+        <ol>
+          <li>Webページ上でテキストを選択</li>
+          <li>右クリックして「タスクを抽出」を選択</li>
+        </ol>
+      </div>
+    </main>
+    
+    <footer>
+      <p>Todo Calendar v1.0.0</p>
+    </footer>
+  </div>
+  
+  <script src="../js/popup.js"></script>
+</body>
+</html> 
