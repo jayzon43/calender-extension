@@ -109,8 +109,4 @@ OpenAI APIキーおよびGoogle Cloud認証情報の設定と管理は、利用�
 
 本ソフトウェアの使用は、すべて利用者ご自身の責任において行うものとします。
 
-## ライセンス
-
-MIT License 
-# calender-extension
 # calender-extension
